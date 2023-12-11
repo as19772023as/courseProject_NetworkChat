@@ -38,6 +38,7 @@ public class ServerLog {
         writeLog(s);
         return s;
     }
+
     public void writeLog(String s) {
         try {
             BufferedWriter bf = new BufferedWriter(new FileWriter("src/main/resources/serverLog.log", true));
@@ -46,5 +47,6 @@ public class ServerLog {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

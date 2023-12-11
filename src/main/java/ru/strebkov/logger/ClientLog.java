@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 public class ClientLog {
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     protected AtomicInteger num = new AtomicInteger(0);
@@ -46,5 +47,6 @@ public class ClientLog {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

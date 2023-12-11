@@ -33,3 +33,48 @@ EXIT FROM CHAT (5) : : Andrey[49854]
 CLOSING A CHANNEL WITH A USER (5) : : [Andrey[49854]]- DONE
 [2023/12/07 13:01:55  17]
 INFO (2) : EXIT
+[2023/12/08 17:53:05   1]
+INFO (1) : Hello
+[2023/12/08 17:57:26   1]
+INFO (1) : Hello
+[2023/12/08 17:58:14   1]
+INFO (1) : Hello
+[2023/12/08 17:58:57   1]
+INFO (1) : Hello
+[2023/12/08 18:01:13   1]
+INFO (1) : Hello
+[2023/12/08 18:08:43   1]
+INFO (1) : Hello
+[2023/12/08 18:22:16   1]
+INFO (1) : Hello
+[2023/12/08 18:26:22   1]
+INFO (1) : Hello
+[2023/12/09 13:54:20   1]
+INFO (1) : Hello! Server is active, Waiting for console commands or user connection.. 
+To shut down the server - write "exit"
+[2023/12/09 13:54:44   2]
+NEW USER  (1) : : pool-1-thread-1[51854]
+[2023/12/09 13:54:44   3]
+NEW USER  (2) : : pool-1-thread-2[51855]
+[2023/12/09 13:54:44   4]
+NEW USER  (3) : : pool-1-thread-3[51856]
+[2023/12/09 13:54:44   5]
+NEW USER  (4) : : pool-1-thread-4[51857]
+[2023/12/09 13:54:50   6]
+EXIT FROM CHAT (1) : : pool-1-thread-1[51854]
+[2023/12/09 13:54:50   7]
+EXIT FROM CHAT (2) : : pool-1-thread-2[51855]
+[2023/12/09 13:54:50   8]
+EXIT FROM CHAT (3) : : pool-1-thread-3[51856]
+[2023/12/09 13:54:50   9]
+EXIT FROM CHAT (4) : : pool-1-thread-4[51857]
+[2023/12/09 13:54:51  10]
+CLOSING A CHANNEL WITH A USER (1) : : [pool-1-thread-1[51854]]- DONE
+[2023/12/09 13:54:51  11]
+CLOSING A CHANNEL WITH A USER (2) : : [pool-1-thread-2[51855]]- DONE
+[2023/12/09 13:54:51  12]
+CLOSING A CHANNEL WITH A USER (3) : : [pool-1-thread-3[51856]]- DONE
+[2023/12/09 13:54:51  13]
+CLOSING A CHANNEL WITH A USER (4) : : [pool-1-thread-4[51857]]- DONE
+[2023/12/09 13:55:03  14]
+INFO (2) : EXIT

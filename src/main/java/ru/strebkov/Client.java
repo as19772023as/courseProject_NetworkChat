@@ -13,10 +13,12 @@ public class Client {
         return userName;
     }
 
+
     public static void setUserName(String userName) {
         if (!userName.trim().isEmpty())
             Client.userName = userName;
     }
+
 
     public static void main(String[] args) {
         String serverHost = null;
