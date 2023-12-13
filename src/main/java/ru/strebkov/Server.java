@@ -11,23 +11,25 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Server {
+public class Server  implements Runnable {//extends Thread {
 
     public static final Integer PORT = 7879;
     public static final String HOST = "localhost\n";
     public static ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     public static ServerLog LOGGER = ServerLog.getInstance();
 
-    public Server(Integer port) {
-    }
+//    public Server(Integer port) {
+//    }
 
-    public static void main(String[] args) {
+ //   public static void main(String[] args) {
+    @Override
+    public  void run(){
         try (FileWriter fileWriter = new FileWriter("src//main//resources//settings.txt", false)) {
             fileWriter.write("host: " + HOST);
             fileWriter.write("port: " + String.valueOf(PORT));
             fileWriter.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+          //  e.printStackTrace();
         }
 
         try (ServerSocket serverSocket = new ServerSocket(PORT);
@@ -37,7 +39,7 @@ public class Server {
                     " Waiting for console commands or user connection.." +
                     " \nTo shut down the server - write \"exit\"");
 
-            Thread readThread = new Thread(() -> {
+             new Thread(() -> {
                 while (!serverSocket.isClosed()) {
                     try {
                         Thread.sleep(1000);
@@ -59,25 +61,21 @@ public class Server {
                         return;
                     }
                 }
-            });
-            readThread.start();
+            }).start();
 
             while (!serverSocket.isClosed()) {
                 Socket clientSocket = serverSocket.accept();
-                // System.out.println("Есть подключение");
                 System.out.println("There is a connection");
                 // после получения запроса на подключение сервер создаёт сокет
                 // для общения с клиентом и отправляет его в отдельный поток
                 // - ThreadClientHandler и тот продолжает общение от лица сервера
                 executorService.execute(new ThreadClientHandler(clientSocket, LOGGER));
-                // System.out.println("Подключение установлено");
                 System.out.println("Connection ready");
             }
-            // System.out.println("Пытаемся выйти");
             System.out.println("We're trying to get out");
             executorService.shutdown();
         } catch (IOException e) {
-            return;
+          //  e.printStackTrace();
         }
     }
 }

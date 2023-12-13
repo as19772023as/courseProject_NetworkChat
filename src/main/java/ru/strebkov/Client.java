@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
+public class Client extends Thread {
     private static String userName = "Аноним";
 
     public static String getUserName() {
@@ -20,7 +20,9 @@ public class Client {
     }
 
 
-    public static void main(String[] args) {
+ //   public static void main(String[] args) {
+    @Override
+    public  void  run(){
         String serverHost = null;
         int serverPort = 0;
 
@@ -38,18 +40,15 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        System.out.println("host подключения: " + serverHost);
-//        System.out.println("port подключения: " + serverPort);
+        System.out.println("host подключения: " + serverHost);
+        System.out.println("port подключения: " + serverPort);
 
         try (Socket socketClient = new Socket(serverHost, serverPort);
              PrintWriter printWriter = new PrintWriter(socketClient.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socketClient.getInputStream()))) {
-            // System.out.println("Клиент подключился to socketClient.");
-            System.out.println("The client connected to the socketclient");
 
+            System.out.println("The client connected to the socket client");
             Scanner scanner = new Scanner(System.in);
-//            System.out.println("\nВведите свое имя для знакомства с сервером!\n" +
-//                    "После вводите сообщения для отправки пользователям или /exit для выхода из канала:");
             System.out.println("\nEnter your name to join the server!\n" +
                     "Then enter messages to send to users or 'exit' to exit the channel: CLIENT");
 
@@ -80,6 +79,7 @@ public class Client {
             System.out.println("Closing the connection channel - DONE.");
         } catch (IOException | InterruptedException e) {
             return;
+           // e.printStackTrace();
         }
     }
 

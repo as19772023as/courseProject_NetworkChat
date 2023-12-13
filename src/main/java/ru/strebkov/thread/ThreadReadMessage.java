@@ -30,7 +30,7 @@ public class ThreadReadMessage extends Thread {
                 Thread.sleep(1000);
             }
         } catch (IOException | InterruptedException e) {
-            return;
+          //  e.printStackTrace();
         }
     }
 }

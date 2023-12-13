@@ -19,9 +19,9 @@ public class ThreadClientHandler implements Runnable {
 
     @Override
     public void run() {
-        try (PrintWriter out = new PrintWriter(clientDialog.getOutputStream(), true);
+        try (PrintWriter prWr = new PrintWriter(clientDialog.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(clientDialog.getInputStream()))) {
-//            System.out.println("Запись и чтение для приема и вывода создана");
+            //Запись и чтение для приема и вывода создана
             System.out.println("Write and read for reception and output created");
 
             final String name = in.readLine() + "[" + clientDialog.getPort() + "]";
@@ -32,20 +32,20 @@ public class ThreadClientHandler implements Runnable {
                 System.out.println("Read the message from " + name + "=>> " + msg);
                 if (msg.equalsIgnoreCase("exit")) {
                     LOGGER.log("Exit from Chat", String.format(": %s", name));
-                    out.println("Server is waiting - " + msg + " - ОК");
+                    prWr.println("Server is waiting - " + msg + " - ОК");
                     Thread.sleep(1000);
                     break;
                 }
                 //не получили выход, значит работаем
                 System.out.println("Server is ready to record....");
                 String msgAndUser = name + " =>> " + msg;
-                out.println(">>>" + msgAndUser + " - ОК");
+                prWr.println(">>>" + msgAndUser + " - ОК");
                 clientLog.log(name, msg);
                 System.out.println("Server recorded the message");
             }
             LOGGER.log("Closing a channel with a user", String.format(": [%s]- DONE", name));
         } catch (IOException | InterruptedException e) {
-            return;
+            e.getMessage();
         }
     }
 }

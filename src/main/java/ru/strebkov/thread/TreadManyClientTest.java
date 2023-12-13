@@ -12,17 +12,16 @@ public class TreadManyClientTest implements Runnable {
     public TreadManyClientTest() {
         try {
             socket = new Socket("127.0.0.1", 7879);
-//            System.out.println("Клиент подключен start");
             System.out.println("Client connected - start");
             Thread.sleep(100);
         } catch (IOException | InterruptedException e) {
-            return;
+            e.printStackTrace();
         }
     }
 
     @Override
     public void run() {
-        try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        try (PrintWriter prWr = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
         ) {
             System.out.println("The client has connected");
@@ -30,22 +29,23 @@ public class TreadManyClientTest implements Runnable {
                     "Then enter messages to send to users or 'exit' to exit the channel: TEST");
 
             String name = Thread.currentThread().getName();
-            out.println(name);
+            prWr.println(name);
 
             Thread.sleep(1000);
             ThreadReadMessage send = new ThreadReadMessage();
             send.start();
+            String msg;
             for (int i = 1; i <= 5; i++) {
-                String msg = "Message - " + i;
-                out.println(msg);
+                msg = "Message - " + i;
+                prWr.println(msg);
 
                 Thread.sleep(1000);
                 if (in.read() > -1) {
                     msgFromServer(in);
                 }
             }
-            String msg = "exit";
-            out.println(msg);
+            msg = "exit";
+            prWr.println(msg);
 
             Thread.sleep(1000);
             if (msg.equalsIgnoreCase("exit")) {
@@ -54,7 +54,7 @@ public class TreadManyClientTest implements Runnable {
             }
             System.out.println("Closing the connection channel - DONE. TEST");
         } catch (IOException | InterruptedException e) {
-            return;
+           // e.printStackTrace();
 
         }
     }
