@@ -47,3 +47,4 @@
   
 **[TreadManyClientTest.java](src/main/java/ru/strebkov/thread/TreadManyClientTest.java) используется**:
 - Поток для тестирования подключения нескольких пользователей, которые запускаются через [Main.java](src/main/java/ru/strebkov/Main.java)
+.
